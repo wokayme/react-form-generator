@@ -1,0 +1,265 @@
+#formBuilder{
+    display: flex;
+    text-align: left;
+    width: 1000px;
+    margin: 200px auto;
+}
+#formBuilder #formBuilder-form{
+    width: 70%;
+    border: 1px solid #1e5799;
+    padding-bottom: 150px;
+}
+#formBuilder #optionColumn{
+    width: 30%;
+    border: 1px solid #000;
+}
+#formBuilder .field{
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    color: #ffffff;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#4096ee+0,82b7ed+100 */
+    background: rgb(64,150,238); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(64,150,238,1) 0%, rgba(130,183,237,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(64,150,238,1) 0%,rgba(130,183,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(64,150,238,1) 0%,rgba(130,183,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#82b7ed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    border-bottom: 1px solid #ffffff;
+}
+#formBuilder .field.actualmoving{
+    background: #356EB1;
+}
+#formBuilder #formBuilder-form > div > div{
+    background: #f9fdff;
+}
+#formBuilder #formBuilder-form > div{
+    border-bottom: #1e5799 2px solid;
+}
+#formBuilder #formBuilder-form > div > div{
+    padding: 10px;
+}
+#formBuilder #formBuilder-form .actuallyMoving{
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#formBuilder .placeholder-down{
+    padding-bottom: 20px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+    background: -moz-linear-gradient(-45deg, rgba(30,87,153,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+#formBuilder .placeholder-up{
+    padding-top: 20px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+    background: -moz-linear-gradient(-45deg, rgba(30,87,153,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+#formBuilder .placeholder{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+    background: -moz-linear-gradient(-45deg, rgba(30,87,153,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+#formBuilder #formBuilder-form > div.actualmoving > div{
+    /*transform:translateX(-9999px)*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,2989d8+50,207cca+51,7db9e8+100;Blue+Gloss+Default */
+    background: #1e5799; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: #ffffff;
+}
+#formBuilder .elementOFDrag input{
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    background: #fff;
+    box-shadow: none;
+    padding: 8px;
+    margin-left: 20px;
+}
+#formBuilder .elementOFDrag textarea{
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    background: #fff;
+    box-shadow: none;
+    padding: 8px;
+    width: 60%;
+    margin-left: 20px;
+}
+#formBuilder .mainLabel span{
+    display: inline-block;
+    width: 20%;
+    box-sizing: border-box;
+}
+#formBuilder .inputLabel input,
+#formBuilder .mainLabel select,
+#formBuilder .mainLabel option{
+    width: 60%;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 0;
+    border-radius: 0px;
+}
+#formBuilder .mainLabel span{
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 14px;
+}
+#formBuilder label{
+    display: block;
+}
+#formBuilder .mainLabel input[type=checkbox]{
+    width: auto;
+    height: 15px;
+    vertical-align: bottom;
+    margin-left: 0;
+}
+#formBuilder .mainLabel select{
+    height: 36px;
+    line-height: 36px;
+    width: calc(60% + 16px);
+}
+#formBuilder .fieldsTop > div,
+#formBuilder .fieldsBottom > div{
+    margin: 10px;
+}
+#formBuilder .show{
+    display: block;
+}
+#formBuilder .hidden{
+    display: none;
+}
+#formBuilder .headerBar{
+    padding-bottom: 13px;
+    line-height: 30px;
+}
+.#formBuilder mainField{
+    border-top: 1px solid #82B4EA;
+}
+#formBuilder .headerBar .requied{
+    color: red;
+    font-size: 25px;
+}
+#formBuilder .headerBar button{
+    float: right;
+}
+#formBuilder .headerBar button,
+#formBuilder .optionFields>button{
+    background: #1e5799;
+    display: inline-block;
+    padding: 8px 13px;
+    border-radius: 35px;
+    color: #ffffff;
+    border: 1px solid #1e5799;
+    margin: 0 5px;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+#formBuilder .headerBar button:hover,
+#formBuilder .optionFields>button:hover{
+    color: #1e5799;
+    background: #ffffff;
+}
+#formBuilder .button-show-more{
+    border-top: 1px solid #ccc;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 20px;
+}
+#formBuilder .button-show-more button{
+    display: inline-block;
+    background: #f9fdff;
+    color: #000000;
+    border: 0;
+    position: absolute;
+    text-shadow: none;
+    margin-top: -7px;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    width: 110px;
+    left: calc(50% - 55px);
+    right: calc(50% - 55px);
+}
+#formBuilder .typeField{
+    vertical-align: bottom;
+    font-size: 14px;
+    color: #cccccc;
+}
+#formBuilder .optionFields{
+    width: 60%;
+    display: inline-block;
+}
+#formBuilder .optionFields ol{
+    padding-left: 10px;
+}
+#formBuilder .optionFields ol input:first-child{
+    margin-left: 0;
+}
+#formBuilder .optionFields ol li{
+    margin-bottom: 7px;
+}
+#formBuilder .optionFields ol input{
+    width: 35%;
+}
+#formBuilder .optionFields ol button{
+    background: #1e5799;
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 5px;
+    color: #ffffff;
+    border: 1px solid #1e5799;
+    margin: 0 5px;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+    -webkit-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+    line-height: 15px;
+}
+#formBuilder .optionFields ol button:hover{
+    background: #ffffff;
+    color: #1e5799;
+}
+#formBuilder .hideExtraOptions{
+    padding-bottom: 20px;
+}
+#formBuilder .fieldToDrag i{
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 15px;
+}
+pre, form{
+    text-align: left;
+    border: 1px solid #000000;
+    margin: 0 auto;
+    padding: 20px;
+}
+#formshower h3{
+    height: 30px;
+}
+#formshower {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+#formshower > div{
+    width: 50%;
+}
