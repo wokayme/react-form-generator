@@ -166,6 +166,9 @@ jsonload = [
                 }
 ```
 
+# How generate form? Use another plugin:
+https://github.com/seapage/generate-form-from-json
+
 # License
 GNU 3.0
 
