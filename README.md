@@ -7,9 +7,9 @@ Live Preview: http://reactformbuilder.wokay.me/
 
 # Quick start
 ##### 1. Install Plugin
-`npm i react-form-builder-creator`
+`npm i react-form-creator`
 ##### 2. Import component to script
-`import FormBuilder from 'react-form-builder-creator'`
+`import FormBuilder from 'react-form-creator'`
 ##### 3. Display/render component
 ```
           <FormBuilder />
