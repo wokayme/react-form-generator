@@ -11,10 +11,12 @@
     "strict": true,                          
     "noImplicitAny": true,              
     "strictNullChecks": true,
-    "esModuleInterop": true      
+    "esModuleInterop": true,
+    "typeRoots": ["./types", "./node_modules/@types"],
   },
   "exclude": [
     "dist",
-    "example"
+    "example",
+    "node_modules",
   ]
 }

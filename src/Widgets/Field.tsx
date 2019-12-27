@@ -3,13 +3,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useDrag, DragSourceMonitor } from 'react-dnd';
+import {PredefinedField} from '../types/Field';
 
-export default function Field({field}){
-    const name = field.name
+export default function Field({field}: {field: PredefinedField}){
+    const fieldType = field.name
     const [{ isDragging }, drag] = useDrag({
-        item: { name, type: 'box' },
-        end: (item: { name: string } | undefined, monitor: DragSourceMonitor) => {
-          const dropResult = monitor.getDropResult()
+        item: { fieldType, type: 'field' },
+        end: (item: { fieldType: PredefinedField } | undefined, monitor: DragSourceMonitor) => {
         },
         collect: monitor => ({
           isDragging: monitor.isDragging(),

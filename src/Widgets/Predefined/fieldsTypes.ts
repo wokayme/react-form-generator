@@ -1,38 +1,41 @@
 
+import { PredefinedField } from '../../types/field';
+import { FieldType, InterfaceType} from '../../types/consts';
+
 const label = {
     name: 'label',
     label: 'Label',
-    type: 'input',
+    type: FieldType.Input,
 }
 
 const name = {
     name: 'name',
     label: 'Name',
-    type: 'input',
+    type: FieldType.Input,
 }
 
 const defaultValue = {
     name: 'defaultValue',
     label: 'Default value',
-    type: 'input',
+    type: FieldType.Input,
 }
 
 const className = {
     name: 'className',
     label: 'CSS classes',
-    type: 'input',
+    type: FieldType.Input,
 }
 
 const isRequired = {
     name: 'isRequire',
     label: 'Required',
-    type: 'switch',
+    type: FieldType.Switch,
 }
 
 const inputType = {
     name: 'type',
     label: 'Type of input',
-    type: 'select',
+    type: FieldType.Select,
     options: [
         {
             label: 'Text',
@@ -50,47 +53,57 @@ const inputType = {
 }
 
 
-const fieldsJSON = [
+
+const fieldsJSON: Array<PredefinedField> = [
     {
         label: "Input",
-        name: 'input',
+        name: FieldType.Input,
         options: [label, name, defaultValue, inputType, className, isRequired]
     },
     {
         label: "Text Area",
-        name: 'textarea'
+        name: FieldType.TextArea,
+        options: [],
     },
     {
         label: "Radio Group",
-        name: 'radioGroup'
+        name: FieldType.RadioGroup,
+        options: [],
     },
     {
         label: "Checkbox group",
-        name: 'checkboxGroup'
+        name: FieldType.CheckboxGroup,
+        options: [],
     },
     {
         label: "Select",
-        name: 'select'
+        name: FieldType.Select,
+        options: [],
     },
     {
         label: "Upload file",
-        name: 'uploadFile'
+        name: FieldType.UploadFile,
+        options: [],
     },
     {
         label: "Button",
-        name: 'button'
+        name: InterfaceType.Button,
+        options: [],
     },
     {
-        label: "Header",
-        name: 'header'
+        label: "Heading",
+        name: InterfaceType.Header,
+        options: [],
     },
     {
         label: "Paragraph",
-        name: 'paragraph'
+        name: InterfaceType.Paragraph,
+        options: [],
     },
     {
         label: "Hidden input",
-        name: 'hiddenInput'
+        name: FieldType.Hidden,
+        options: [],
     },
 ];
 

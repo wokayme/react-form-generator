@@ -1,41 +1,41 @@
 import React, { useState } from 'react'
 import Box from '@material-ui/core/Box';
-import { useDrop } from 'react-dnd'
+import { useDrop , DragObjectWithType} from 'react-dnd'
 import FilterNoneOutlinedIcon from '@material-ui/icons/FilterNoneOutlined';
 import AddToPhotosOutlinedIcon from '@material-ui/icons/AddToPhotosOutlined';
 import Typography from '@material-ui/core/Typography';
 import FieldList from './FieldList';
 import fieldsJSON from '../Predefined/fieldsTypes';
+import FormJson from '../../types/FormJson'
+import { FieldType } from '../../types/consts';
 
 const style = {
   listContainer:{
     padding: '20px'
-  },
+  } as React.CSSProperties,
   dragMessage: {
     color: '#bfbfbf',
     padding: "50px",
     border: "2px dashed #bfbfbf",
     textAlign: 'center',
     borderRadius: "20px"
-  },
+  } as React.CSSProperties,
   dragMessageActive: {
     color: '#7f7f7f',
     border: "2px dashed #7f7f7f",
-  },
+  } as React.CSSProperties,
   dragMessageIcon: {
     fontSize: "90px",
-  },
+  } as React.CSSProperties,
 }
 
-export default function Creator({formJson, setFormJson}){
+export default function Creator({formJson, setFormJson}: {formJson: FormJson, setFormJson: Function}){
 
   const [{ canDrop, isOver }, drop] = useDrop({
-    accept: 'box',
-    drop: ({name: fieldName}) => {
-      console.log(fieldName)
-      console.log(fieldsJSON.find((field)=>field.name===fieldName))
+    accept: 'field',
+    drop: ({fieldType} : DragObjectWithType & {fieldType: FieldType}) => {
 
-      const fieldToAdded = {...fieldsJSON.find((field)=>field.name===fieldName)}
+      const fieldToAdded = {...fieldsJSON.find((field)=>field.name===fieldType)}
       
       setFormJson(
         [
@@ -53,19 +53,12 @@ export default function Creator({formJson, setFormJson}){
   })
 
 
-  const isActive = canDrop && isOver
-  let backgroundColor = '#fff'
-  if (isActive) {
-    backgroundColor = 'darkgreen'
-  } else if (canDrop) {
-    backgroundColor = 'darkkhaki'
-  }
+  const isActive = canDrop && isOver;
 
-    return <>
-      <Box style={style.listContainer}>
-          {Object.values(formJson).length === 0 && 
-          <Box
-          ref={drop} style={!isActive ? style.dragMessage : {...style.dragMessage, ...style.dragMessageActive}}
+    return <Box style={style.listContainer}>
+          {formJson.length === 0 && 
+          drop(<div><Box
+           style={!isActive ? style.dragMessage : {...style.dragMessage, ...style.dragMessageActive}}
           >
             <span id="client-snackbar" >
             {isActive ? <>
@@ -82,9 +75,8 @@ export default function Creator({formJson, setFormJson}){
                 </Typography>
               </>}
             </span>
-        </Box>
+        </Box></div>)
         }
         <FieldList formJson={formJson} setFormJson={setFormJson} />
       </Box>
-    </>
 }

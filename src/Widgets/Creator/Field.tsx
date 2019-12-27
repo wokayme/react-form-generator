@@ -2,7 +2,7 @@ import React, { useState, Fragment, useCallback } from 'react'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { useDrop } from 'react-dnd'
+import { useDrop, DragObjectWithType } from 'react-dnd'
 import Box from '@material-ui/core/Box';
 import { useDrag, DragSourceMonitor } from 'react-dnd'
 import FilterNoneOutlinedIcon from '@material-ui/icons/FilterNoneOutlined';
@@ -13,6 +13,9 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import fieldsJSON from '../Predefined/fieldsTypes';
 import Divider from '@material-ui/core/Divider';
 import FormGenerator from './../FormGenerator/FormGenerator'
+import Field from '../../types/Field'
+import FormJson from '../../types/FormJson'
+import { FieldType } from '../../types/consts';
 
 const style = {
   placeholder: {
@@ -21,19 +24,21 @@ const style = {
     border: "2px dashed #bfbfbf",
     textAlign: 'center',
     borderRadius: "20px",
-  },
+  } as React.CSSProperties,
   dragMessageIcon: {
     fontSize: "40px",
-  },
+  } as React.CSSProperties,
 }
 
-export default function Field({field, setFormJson, formJson, index, updateField}){
+type DraggedField = DragObjectWithType & {fieldType: FieldType, moveIndex: number}
+
+export default function Field({field, setFormJson, formJson, index, updateField}: {field: Field, setFormJson: Function, formJson: FormJson, index: number, updateField: Function}){
 
   const [isTheSame, isTheSameUpdate] = useState(false); 
 
   const [{ canDrop, isOver }, drop] = useDrop({
-    accept: 'box',
-    drop: ({name: fieldName, moveIndex}) => {
+    accept: 'field',
+    drop: ({fieldType: fieldName, moveIndex} : DraggedField )=> {
 
       
       if(moveIndex === index){
@@ -47,7 +52,7 @@ export default function Field({field, setFormJson, formJson, index, updateField}
         newFormJson.splice(index, 0, newFormJson.splice(moveIndex, 1)[0])
       }else{
         newFormJson.splice(index+1, 0, {
-          ...fieldsJSON.find((field)=>field.name===fieldName)
+          ...(fieldsJSON.find((field)=>field.name===fieldName) as Field)
         });
       }
       setFormJson(
@@ -58,9 +63,9 @@ export default function Field({field, setFormJson, formJson, index, updateField}
       
       return ({})
     },
-    hover: ({name: fieldName, moveIndex}) => {
+    hover: ({fieldType: fieldName, moveIndex} : DraggedField) => {
       isTheSameUpdate(moveIndex === index)
-    }
+    },
     collect: monitor => {
       if(monitor.isOver())
         changeOpenStatus(false);
@@ -73,9 +78,9 @@ export default function Field({field, setFormJson, formJson, index, updateField}
 
 
   const [{ isDragging }, drag] = useDrag({
-    item: { type: 'box', moveIndex: index },
+    item: { type: 'field', moveIndex: index },
     end: (item: { moveIndex: number, type: string } | undefined, monitor: DragSourceMonitor) => {
-      const dropResult = monitor.getDropResult()
+      monitor.getDropResult()
     },
     collect: monitor => ({
       isDragging: monitor.isDragging(),
@@ -91,9 +96,11 @@ export default function Field({field, setFormJson, formJson, index, updateField}
 
     return (
       <Fragment>
+        <div
+            ref={(...arg)=>{drag(...arg); drop(...arg)}}
+            >
         <ListItem
-            onClick={()=>changeOpenStatus(!isOpen)}
-            ref={(...arg)=>{drag(...arg); drop(...arg)}} style={{opacity}}>
+            onClick={()=>changeOpenStatus(!isOpen)} style={{opacity}}>
             <ListItemText
             primary={listLabel}
             secondary={listSecondLabel}
@@ -112,8 +119,9 @@ export default function Field({field, setFormJson, formJson, index, updateField}
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <Divider />
           <ListItem>
-            <FormGenerator fieldList={field?.options} fieldListValues={field?.optionsValues} updateField={updateField} />
+            <FormGenerator fieldList={field.options} fieldListValues={field?.optionsValues} updateField={updateField} />
           </ListItem>
         </Collapse>
+        </div>
       </Fragment>)
 }
