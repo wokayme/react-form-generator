@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import WebFont from 'webfontloader';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import Creator from './Widgets/Creator/Creator';
-import FormJson from './types/FormJson'
-import FieldList from './Widgets/FieldList';
 import { DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend';
 import JSONPretty from 'react-json-pretty';
+import Creator from './Widgets/Creator/Creator';
+import FormJson from './types/FormJson';
+import FieldList from './Widgets/FieldList';
 
 WebFont.load({
   google: {
@@ -18,13 +18,12 @@ WebFont.load({
   }
 });
 
-
 const ReactFormCreator: React.FC = () => {
   const [tabIndex, setTabIndex] = React.useState<number>(0);
   const [formJson, setFormJson] = React.useState<FormJson>([]);
 
-  const handleChange = (event: Event, tabIndex: number) => {
-    setTabIndex(tabIndex);
+  const handleChange = (event: Event, newTabIndex: number): void => {
+    setTabIndex(newTabIndex);
   };
 
   return (

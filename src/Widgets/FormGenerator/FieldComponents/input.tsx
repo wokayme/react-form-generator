@@ -1,14 +1,18 @@
-import React, { useState, Fragment, useCallback } from 'react'
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Field from '../../../types/Field';
 
-export default ({name, label, type, updateField, value=''}: Field & {updateField: Function}) => {
+export default ({
+  name,
+  label,
+  updateField,
+  value = ''
+}: Field & { updateField: Function }): JSX.Element => {
+  const onChange = (e: React.ChangeEvent): void => {
+    updateField({
+      [name]: (e.target as HTMLInputElement & { value: string }).value
+    });
+  };
 
-    const onChange = (e: React.ChangeEvent)=>{
-        updateField({
-            [name]: (e.target as HTMLInputElement & {value: string}).value
-        })
-    }
-
-    return <TextField defaultValue={value} fullWidth label={label} onChange={onChange} />
-}
+  return <TextField defaultValue={value} fullWidth label={label} onChange={onChange} />;
+};

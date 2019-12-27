@@ -1,8 +1,8 @@
-import { FieldType } from "../../../types/consts";
+import { FieldType } from '../../../types/consts';
 
 const label = {
-    name: 'label',
-    label: 'Label',
-    type: FieldType.Input,
-}
+  name: 'label',
+  label: 'Label',
+  type: FieldType.Input
+};
 export default label;

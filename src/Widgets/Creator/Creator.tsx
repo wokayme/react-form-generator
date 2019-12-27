@@ -1,82 +1,91 @@
-import React, { useState } from 'react'
+import React from 'react';
 import Box from '@material-ui/core/Box';
-import { useDrop , DragObjectWithType} from 'react-dnd'
+import { useDrop, DragObjectWithType } from 'react-dnd';
 import FilterNoneOutlinedIcon from '@material-ui/icons/FilterNoneOutlined';
 import AddToPhotosOutlinedIcon from '@material-ui/icons/AddToPhotosOutlined';
 import Typography from '@material-ui/core/Typography';
 import FieldList from './FieldList';
 import fieldsJSON from '../Predefined/fieldsTypes';
-import FormJson from '../../types/FormJson'
+import FormJson from '../../types/FormJson';
 import { FieldType } from '../../types/consts';
 
 const style = {
-  listContainer:{
+  listContainer: {
     padding: '20px'
   } as React.CSSProperties,
   dragMessage: {
     color: '#bfbfbf',
-    padding: "50px",
-    border: "2px dashed #bfbfbf",
+    padding: '50px',
+    border: '2px dashed #bfbfbf',
     textAlign: 'center',
-    borderRadius: "20px"
+    borderRadius: '20px'
   } as React.CSSProperties,
   dragMessageActive: {
     color: '#7f7f7f',
-    border: "2px dashed #7f7f7f",
+    border: '2px dashed #7f7f7f'
   } as React.CSSProperties,
   dragMessageIcon: {
-    fontSize: "90px",
-  } as React.CSSProperties,
-}
+    fontSize: '90px'
+  } as React.CSSProperties
+};
 
-export default function Creator({formJson, setFormJson}: {formJson: FormJson, setFormJson: Function}){
-
+export default function Creator({
+  formJson,
+  setFormJson
+}: {
+  formJson: FormJson;
+  setFormJson: Function;
+}): JSX.Element {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: 'field',
-    drop: ({fieldType} : DragObjectWithType & {fieldType: FieldType}) => {
+    drop: ({ fieldType }: DragObjectWithType & { fieldType: FieldType }) => {
+      const fieldToAdded = { ...fieldsJSON.find(field => field.name === fieldType) };
 
-      const fieldToAdded = {...fieldsJSON.find((field)=>field.name===fieldType)}
-      
-      setFormJson(
-        [
-          ...formJson,
-          fieldToAdded
-        ]
-      )
-      
-      return ({ name: 'Dustbin' })
+      setFormJson([...formJson, fieldToAdded]);
+
+      return { name: 'Dustbin' };
     },
     collect: monitor => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    }),
-  })
-
+      canDrop: monitor.canDrop()
+    })
+  });
 
   const isActive = canDrop && isOver;
 
-    return <Box style={style.listContainer}>
-          {formJson.length === 0 && 
-          drop(<div><Box
-           style={!isActive ? style.dragMessage : {...style.dragMessage, ...style.dragMessageActive}}
-          >
-            <span id="client-snackbar" >
-            {isActive ? <>
-                <AddToPhotosOutlinedIcon style={style.dragMessageIcon}/>
+  return (
+    <Box style={style.listContainer}>
+      {formJson.length === 0 &&
+        drop(
+          <div>
+            <Box
+              style={
+                !isActive ? style.dragMessage : { ...style.dragMessage, ...style.dragMessageActive }
+              }
+            >
+              <span id="client-snackbar">
+                {isActive ? (
+                  <>
+                    <AddToPhotosOutlinedIcon style={style.dragMessageIcon} />
 
-                <Typography variant="h4" gutterBottom>
-                  Drop fields here
-                </Typography>
-              </> : <>
-                <FilterNoneOutlinedIcon style={style.dragMessageIcon}/>
+                    <Typography variant="h4" gutterBottom>
+                      Drop fields here
+                    </Typography>
+                  </>
+                ) : (
+                  <>
+                    <FilterNoneOutlinedIcon style={style.dragMessageIcon} />
 
-                <Typography variant="h4" gutterBottom>
-                  Drag fields here
-                </Typography>
-              </>}
-            </span>
-        </Box></div>)
-        }
-        <FieldList formJson={formJson} setFormJson={setFormJson} />
-      </Box>
+                    <Typography variant="h4" gutterBottom>
+                      Drag fields here
+                    </Typography>
+                  </>
+                )}
+              </span>
+            </Box>
+          </div>
+        )}
+      <FieldList formJson={formJson} setFormJson={setFormJson} />
+    </Box>
+  );
 }
