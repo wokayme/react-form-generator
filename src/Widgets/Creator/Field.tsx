@@ -9,6 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 import fieldsJSON from '../Predefined/fieldsTypes';
 import FormGenerator from '../FormGenerator/FormGenerator';
@@ -26,6 +29,9 @@ const style = {
   } as React.CSSProperties,
   dragMessageIcon: {
     fontSize: '40px'
+  } as React.CSSProperties,
+  iconsAction: {
+    marginRight: '8px'
   } as React.CSSProperties
 };
 
@@ -36,13 +42,15 @@ export default function FieldComponent({
   setFormJson,
   formJson,
   index,
-  updateField
+  updateField,
+  openDeleteDialog
 }: {
   field: Field;
   setFormJson: Function;
   formJson: FormJson;
   index: number;
   updateField: Function;
+  openDeleteDialog: Function;
 }): JSX.Element {
   const [isTheSame, isTheSameUpdate] = useState(false);
   const [isOpen, changeOpenStatus] = useState(false);
@@ -104,9 +112,26 @@ export default function FieldComponent({
           drop(...arg);
         }}
       >
-        <ListItem onClick={(): void => changeOpenStatus(!isOpen)} style={{ opacity }}>
+        <ListItem style={{ opacity }}>
           <ListItemText primary={listLabel} secondary={listSecondLabel} />
-          {isOpen ? <ExpandLess /> : <ExpandMore />}
+          <IconButton
+            size="small"
+            style={style.iconsAction}
+            onClick={(): void => {
+              openDeleteDialog();
+            }}
+          >
+            <DeleteOutlineIcon />
+          </IconButton>
+          <Button
+            onClick={(): void => changeOpenStatus(!isOpen)}
+            variant="outlined"
+            size="small"
+            color="primary"
+            endIcon={isOpen ? <ExpandLess /> : <ExpandMore />}
+          >
+            Edit
+          </Button>
         </ListItem>
         {isOver && !isTheSame && (
           <Box style={style.placeholder}>
