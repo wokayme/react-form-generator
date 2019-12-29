@@ -21,6 +21,8 @@ module.exports = {
     'no-undef': 0,
     'react/jsx-props-no-spreading': 0,
     'react/no-array-index-key': 0,
+    'react/prop-types': 0,
+    '@typescript-eslint/ban-ts-ignore': 0,
   },
   settings: {
     'import/resolver': {

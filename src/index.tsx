@@ -9,8 +9,9 @@ import { DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend';
 import JSONPretty from 'react-json-pretty';
 import Creator from './Widgets/Creator/Creator';
-import FormJson from './types/FormJson';
+import FormJson, { FormJsonLoaded } from './types/FormJson';
 import FieldList from './Widgets/FieldList';
+import { clearJsonOutput, parseJsonLoaded } from './Widgets/Predefined/helpers';
 
 WebFont.load({
   google: {
@@ -18,9 +19,10 @@ WebFont.load({
   }
 });
 
-const ReactFormCreator: React.FC = () => {
+const ReactFormCreator: React.FC<{ jsonLoad: FormJsonLoaded }> = ({ jsonLoad }) => {
+  const predefinedJSON = jsonLoad ? parseJsonLoaded(jsonLoad) : [];
   const [tabIndex, setTabIndex] = React.useState<number>(0);
-  const [formJson, setFormJson] = React.useState<FormJson>([]);
+  const [formJson, setFormJson] = React.useState<FormJson>(predefinedJSON);
 
   const handleChange = (event: Event, newTabIndex: number): void => {
     setTabIndex(newTabIndex);
@@ -50,7 +52,7 @@ const ReactFormCreator: React.FC = () => {
             {tabIndex === 1 && <Box>Preview</Box>}
             {tabIndex === 2 && (
               <Box>
-                <JSONPretty id="json-pretty" data={formJson} />
+                <JSONPretty id="json-pretty" data={clearJsonOutput(formJson)} />
               </Box>
             )}
           </Paper>

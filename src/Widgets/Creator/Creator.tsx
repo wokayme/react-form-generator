@@ -39,7 +39,7 @@ export default function Creator({
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: 'field',
     drop: ({ fieldType }: DragObjectWithType & { fieldType: FieldType }) => {
-      const fieldToAdded = { ...fieldsJSON.find(field => field.name === fieldType) };
+      const fieldToAdded = { ...fieldsJSON.find(field => field.fieldType === fieldType) };
 
       setFormJson([...formJson, fieldToAdded]);
 

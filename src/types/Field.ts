@@ -1,19 +1,38 @@
 import { FieldType, InterfaceType } from './consts';
 
-export type OptionsValues = { [key: string]: string };
+export type OptionsValues = {
+  label?: string;
+  name?: string;
+  defaultValue?: string;
+};
 
 export type PredefinedField = {
-  label: string;
-  name: FieldType | InterfaceType;
+  fieldLabel: string;
+  fieldType: FieldType | InterfaceType;
   options: Array<OptionsValues>; // @TODO type
 };
 
+export type FieldLoaded = {
+  label?: string;
+  fieldLabel?: string;
+  fieldType?: string;
+  optionsValues?: OptionsValues;
+  options?: Array<FieldProto>;
+  value?: string;
+  name?: string;
+};
+export type FieldProto = FieldLoaded & {
+  name: string;
+  options?: Array<OptionsValues>;
+  typeField: FieldType | InterfaceType;
+};
+
 type FieldBasic = {
-  label: string;
-  type: FieldType | InterfaceType;
+  fieldLabel: string;
+  fieldType: FieldType | InterfaceType;
   name: string;
   value?: string;
-  options: Array<FieldBasic>; // @TODO upate
+  options: Array<FieldProto>;
   optionsValues?: OptionsValues;
 };
 

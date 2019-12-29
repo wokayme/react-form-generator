@@ -60,7 +60,7 @@ export default function FieldComponent({
       } else {
         newFormJson.splice(index + 1, 0, {
           ...((fieldsJSON.find(
-            prototypeField => prototypeField.name === fieldName
+            prototypeField => prototypeField.fieldType === fieldName
           ) as unknown) as Field)
         });
       }
@@ -93,8 +93,8 @@ export default function FieldComponent({
 
   const opacity = isDragging ? 0.4 : 1;
 
-  const listLabel = field?.optionsValues?.label ? field?.optionsValues.label : field?.label;
-  const listSecondLabel = field?.optionsValues?.label ? field?.label : '';
+  const listLabel = field?.optionsValues?.label ? field?.optionsValues.label : field?.fieldLabel;
+  const listSecondLabel = field?.optionsValues?.label ? field?.fieldLabel : '';
 
   return (
     <>

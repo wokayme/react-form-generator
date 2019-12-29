@@ -2,7 +2,7 @@ import React from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-import Field from '../../../types/Field';
+import { FieldProto } from '../../../types/Field';
 
 export default ({
   name,
@@ -10,7 +10,7 @@ export default ({
   updateField,
   value = '',
   options = []
-}: Field & { updateField: Function }): JSX.Element => {
+}: FieldProto & { updateField: Function }): JSX.Element => {
   const onChange = (e: React.ChangeEvent): void => {
     updateField({
       [name]: (e.target as HTMLInputElement & { value: string }).value
@@ -29,7 +29,7 @@ export default ({
       >
         {options.map(({ label: optionLabel, value: optionValue }) => (
           <MenuItem key={optionLabel} value={optionValue}>
-            {label}
+            {optionLabel}
           </MenuItem>
         ))}
       </Select>

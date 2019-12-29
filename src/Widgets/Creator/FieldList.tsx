@@ -17,7 +17,7 @@ export default function FieldList({
     newFormJson[index].optionsValues = {
       ...newFormJson[index].optionsValues,
       ...options
-    };
+    } as OptionsValues;
     setFormJson(newFormJson);
   };
 

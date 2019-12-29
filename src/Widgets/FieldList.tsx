@@ -8,7 +8,7 @@ export default function FieldList(): JSX.Element {
   return (
     <List>
       {fieldsJSON.map((field, index) => (
-        <Fragment key={field.name}>
+        <Fragment key={field.fieldType}>
           <Field field={field} />
           {fieldsJSON.length - 1 !== index && <Divider />}
         </Fragment>

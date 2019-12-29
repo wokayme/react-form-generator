@@ -5,7 +5,7 @@ import { useDrag } from 'react-dnd';
 import { PredefinedField } from '../types/Field';
 
 export default function Field({ field }: { field: PredefinedField }): JSX.Element {
-  const fieldType = field.name;
+  const fieldType = field.fieldType;
   const [{ isDragging }, drag] = useDrag({
     item: { fieldType, type: 'field' },
     collect: monitor => ({
@@ -16,7 +16,7 @@ export default function Field({ field }: { field: PredefinedField }): JSX.Elemen
 
   return (
     <ListItem ref={drag} style={{ opacity }}>
-      <ListItemText primary={field.label} />
+      <ListItemText primary={field.fieldLabel} />
     </ListItem>
   );
 }
