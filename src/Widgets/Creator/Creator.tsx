@@ -10,9 +10,6 @@ import FormJson from '../../types/FormJson';
 import { FieldType } from '../../types/consts';
 
 const style = {
-  listContainer: {
-    padding: '20px'
-  } as React.CSSProperties,
   dragMessage: {
     color: '#bfbfbf',
     padding: '50px',
@@ -54,7 +51,7 @@ export default function Creator({
   const isActive = canDrop && isOver;
 
   return (
-    <Box style={style.listContainer}>
+    <Box>
       {formJson.length === 0 &&
         drop(
           <div>

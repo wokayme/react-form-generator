@@ -8,16 +8,25 @@ import Box from '@material-ui/core/Box';
 import { DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend';
 import JSONPretty from 'react-json-pretty';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 import Creator from './Widgets/Creator/Creator';
 import FormJson, { FormJsonLoaded } from './types/FormJson';
 import FieldList from './Widgets/FieldList';
 import { clearJsonOutput, parseJsonLoaded } from './Widgets/Predefined/helpers';
+import PreviewGenerator from './Widgets/Generator/PreviewGenerator';
 
 WebFont.load({
   google: {
     families: ['Roboto: 300, 400, 500, 700', 'sans-serif']
   }
 });
+
+const style = {
+  listContainer: {
+    padding: '20px'
+  } as React.CSSProperties
+};
 
 const ReactFormCreator: React.FC<{ jsonLoad: FormJsonLoaded }> = ({ jsonLoad }) => {
   const predefinedJSON = jsonLoad ? parseJsonLoaded(jsonLoad) : [];
@@ -41,18 +50,26 @@ const ReactFormCreator: React.FC<{ jsonLoad: FormJsonLoaded }> = ({ jsonLoad }) 
               aria-label="disabled tabs example"
             >
               <Tab label="Creator" />
-              <Tab label="Preview" disabled />
+              <Tab label="Preview" disabled={formJson.length === 0} />
               <Tab label="JSON" />
             </Tabs>
             {tabIndex === 0 && (
-              <Box>
+              <Box style={style.listContainer}>
                 <Creator formJson={formJson} setFormJson={setFormJson} />
               </Box>
             )}
-            {tabIndex === 1 && <Box>Preview</Box>}
+            {tabIndex === 1 && (
+              <Box style={style.listContainer}>
+                <PreviewGenerator formJson={formJson} />
+              </Box>
+            )}
             {tabIndex === 2 && (
-              <Box>
-                <JSONPretty id="json-pretty" data={clearJsonOutput(formJson)} />
+              <Box style={style.listContainer}>
+                <List>
+                  <ListItem>
+                    <JSONPretty id="json-pretty" data={clearJsonOutput(formJson)} />
+                  </ListItem>
+                </List>
               </Box>
             )}
           </Paper>
