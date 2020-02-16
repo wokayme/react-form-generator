@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Input from './FieldComponents/input';
@@ -13,7 +12,6 @@ export default function PreviewGenerator({ formJson }: { formJson: FormJson }): 
   return (
     <List>
       {formJson.map((field, index) => {
-        // @ts-ignore: Element implicitly has an 'any' type
         return (
           <ListItem key={index}>
             {field.fieldType === FieldType.Input && <Input {...field} updateField={updateField} />}

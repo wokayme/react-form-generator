@@ -23,7 +23,7 @@
         "editor"
     ],
     "scripts": {
-        "dev": "tsc -w --skipLibCheck"
+        "dev": "tsc -w"
     },
     "devDependencies": {
         "@types/react": "^16.9.17",

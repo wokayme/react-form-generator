@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import FieldBasic, { FieldProto, OptionsValues } from '../../../types/Field';
+import FieldBasic, { FieldProto, FieldComponentGenerator } from '../../../types/Field';
 
 export default ({
   name,
@@ -8,11 +8,7 @@ export default ({
   updateField,
   value = '',
   optionsValues = {}
-}: (FieldProto | FieldBasic) & {
-  updateField: Function;
-  optionsValues: OptionsValues;
-  label: string;
-}): JSX.Element => {
+}: (FieldProto | FieldBasic) & FieldComponentGenerator): JSX.Element => {
   const onChange = (e: React.ChangeEvent): void => {
     updateField({
       [name]: (e.target as HTMLInputElement & { value: string }).value

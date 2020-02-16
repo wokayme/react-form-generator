@@ -17,7 +17,7 @@ export type PredefinedField = {
 };
 
 export type FieldLoaded = {
-  label?: string;
+  label: string;
   fieldLabel?: string;
   fieldType?: string;
   optionsValues?: OptionsValues;
@@ -32,12 +32,19 @@ export type FieldProto = FieldLoaded & {
 };
 
 type FieldBasic = {
+  label: string;
   fieldLabel: string;
   fieldType: FieldType | InterfaceType;
   name: string;
   value?: string;
   options: Array<FieldProto>;
   optionsValues?: OptionsValues;
+};
+
+export type FieldComponentGenerator = {
+  updateField: Function;
+  optionsValues?: OptionsValues;
+  label: string;
 };
 
 export default FieldBasic;
