@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  extends: ['airbnb', 'prettier','plugin:@typescript-eslint/recommended'],
+  extends: ['airbnb','plugin:@typescript-eslint/recommended', 'prettier'],
   plugins: ['prettier'],
   parser:  '@typescript-eslint/parser',
   rules: {
@@ -10,6 +10,7 @@ module.exports = {
     'no-underscore-dangle': [2, { 'allow': ['__'] }],
     'default-case': 0,
     'class-methods-use-this': 0,
+    'no-shadow': 0,
     'no-plusplus': 0,
     'prefer-destructuring': 0,
     'consistent-return': 0,
@@ -23,6 +24,7 @@ module.exports = {
     'react/no-array-index-key': 0,
     'react/prop-types': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
+    'react/jsx-wrap-multilines': 0,
   },
   settings: {
     'import/resolver': {
