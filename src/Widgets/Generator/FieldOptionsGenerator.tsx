@@ -3,9 +3,10 @@ import Grid from '@material-ui/core/Grid';
 import Input from './FieldComponents/input';
 import Switch from './FieldComponents/switch';
 import Select from './FieldComponents/select';
-import { FieldType } from '../../types/consts';
+import ListCreator from './FieldComponents/listcreator';
+import { FieldType, FieldTypeCreator } from '../../types/consts';
 import { FormJsonOptions } from '../../types/FormJson';
-import { OptionsValues } from '../../types/Field';
+import { OptionsValues, RadioValue } from '../../types/Field';
 
 const style = {
   background: 'rgba(0,0,0,0.05)',
@@ -42,6 +43,13 @@ export default function FieldOptionsGenerator({
               )}
               {field.typeField === FieldType.Select && (
                 <Select {...field} value={value} updateField={updateField} />
+              )}
+              {field.typeField === FieldTypeCreator.Radio && (
+                <ListCreator
+                  {...field}
+                  value={(value as unknown) as Array<RadioValue>}
+                  updateField={updateField}
+                />
               )}
             </Grid>
           );

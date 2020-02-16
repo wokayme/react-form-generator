@@ -28,7 +28,7 @@ export default ({
         onChange={onChange}
       >
         {options.map(({ label: optionLabel, value: optionValue }) => (
-          <MenuItem key={optionLabel} value={optionValue}>
+          <MenuItem key={optionLabel} value={optionValue as string}>
             {optionLabel}
           </MenuItem>
         ))}

@@ -13,3 +13,8 @@ export enum InterfaceType {
   Paragraph = 'paragraph',
   Button = 'button'
 }
+
+export enum FieldTypeCreator {
+  Checkbox = 'checkbox',
+  Radio = 'radio'
+}

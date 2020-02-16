@@ -1,5 +1,5 @@
 import { PredefinedField } from '../../types/Field';
-import { FieldType, InterfaceType } from '../../types/consts';
+import { FieldType, FieldTypeCreator, InterfaceType } from '../../types/consts';
 
 const label = {
   name: 'label',
@@ -47,6 +47,12 @@ const isDisabled = {
   name: 'isDisabled',
   label: 'Disabled',
   typeField: FieldType.Switch
+};
+
+const radioCreator = {
+  name: 'radioForm',
+  label: 'Radio options',
+  typeField: FieldTypeCreator.Radio
 };
 
 const inputType = {
@@ -97,17 +103,17 @@ const fieldsJSON: Array<PredefinedField> = [
   {
     fieldLabel: 'Radio Group',
     fieldType: FieldType.RadioGroup,
-    options: []
+    options: [label, name, radioCreator]
   },
   {
     fieldLabel: 'Checkbox group',
     fieldType: FieldType.CheckboxGroup,
-    options: []
+    options: [label, name]
   },
   {
     fieldLabel: 'Select',
     fieldType: FieldType.Select,
-    options: []
+    options: [label, name]
   },
   {
     fieldLabel: 'Upload file',
