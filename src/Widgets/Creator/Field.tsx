@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 import fieldsJSON from '../Predefined/fieldsTypes';
-import FormGenerator from '../FormGenerator/FormGenerator';
+import FieldOptionsGenerator from '../Generator/FieldOptionsGenerator';
 import Field from '../../types/Field';
 import FormJson from '../../types/FormJson';
 import { FieldType } from '../../types/consts';
@@ -145,7 +145,7 @@ export default function FieldComponent({
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <Divider />
           <ListItem>
-            <FormGenerator
+            <FieldOptionsGenerator
               fieldList={field.options}
               fieldListValues={field?.optionsValues}
               updateField={updateField}
