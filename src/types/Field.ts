@@ -4,6 +4,10 @@ export type OptionsValues = {
   label?: string;
   name?: string;
   defaultValue?: string;
+  placeholder?: string;
+  type?: string;
+  helperText?: string;
+  isDisabled?: boolean;
 };
 
 export type PredefinedField = {

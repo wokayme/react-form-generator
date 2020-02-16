@@ -13,6 +13,12 @@ const name = {
   typeField: FieldType.Input
 };
 
+const placeholder = {
+  name: 'placeholder',
+  label: 'Placeholder',
+  typeField: FieldType.Input
+};
+
 const defaultValue = {
   name: 'defaultValue',
   label: 'Default value',
@@ -25,9 +31,21 @@ const className = {
   typeField: FieldType.Input
 };
 
+const helperText = {
+  name: 'helperText',
+  label: 'Tip text',
+  typeField: FieldType.Input
+};
+
 const isRequired = {
   name: 'isRequire',
   label: 'Required',
+  typeField: FieldType.Switch
+};
+
+const isDisabled = {
+  name: 'isDisabled',
+  label: 'Disabled',
   typeField: FieldType.Switch
 };
 
@@ -47,6 +65,10 @@ const inputType = {
     {
       label: 'Number',
       value: 'number'
+    },
+    {
+      label: 'Password',
+      value: 'password'
     }
   ]
 };
@@ -55,7 +77,17 @@ const fieldsJSON: Array<PredefinedField> = [
   {
     fieldLabel: 'Input',
     fieldType: FieldType.Input,
-    options: [label, name, defaultValue, inputType, className, isRequired]
+    options: [
+      label,
+      name,
+      defaultValue,
+      inputType,
+      className,
+      isRequired,
+      placeholder,
+      isDisabled,
+      helperText
+    ]
   },
   {
     fieldLabel: 'Text Area',
