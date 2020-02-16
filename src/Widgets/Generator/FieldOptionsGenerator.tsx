@@ -11,7 +11,8 @@ import { OptionsValues, RadioValue } from '../../types/Field';
 const style = {
   background: 'rgba(0,0,0,0.05)',
   borderRadius: '5px',
-  paddingBottom: '15px'
+  paddingBottom: '15px',
+  margin: '-8px 0'
 } as React.CSSProperties;
 
 export default function FieldOptionsGenerator({
