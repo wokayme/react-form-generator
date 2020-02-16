@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Input from './FieldComponents/input';
 import Switch from './FieldComponents/switch';
+import Select from './FieldComponents/select';
 import { FieldType } from '../../types/consts';
 import { FormJsonOptions } from '../../types/FormJson';
 import { OptionsValues } from '../../types/Field';
@@ -39,9 +40,9 @@ export default function FieldOptionsGenerator({
               {field.typeField === FieldType.Switch && (
                 <Switch {...field} value={value} updateField={updateField} />
               )}
-              {/* {field.typeField === FieldType.Select && (
+              {field.typeField === FieldType.Select && (
                 <Select {...field} value={value} updateField={updateField} />
-              )} */}
+              )}
             </Grid>
           );
         })}
