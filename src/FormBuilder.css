@@ -141,7 +141,7 @@
     padding-bottom: 13px;
     line-height: 30px;
 }
-.#formBuilder mainField{
+#formBuilder .mainField{
     border-top: 1px solid #82B4EA;
 }
 #formBuilder .headerBar .requied{
