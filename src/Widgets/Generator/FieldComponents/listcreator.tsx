@@ -73,19 +73,20 @@ export default ({
     name: string,
     defaultSelected: boolean
   ): void => {
-    const newList = [...list];
+    const countSelected = [...list].reduce(
+      (val, { defaultSelected }, curIndex) => val + (defaultSelected && curIndex !== index ? 1 : 0),
+      0
+    );
+
+    const newList = [...list].map(listPos => ({ ...listPos, defaultSelected: false }));
+
     newList[index] = {
       label,
       name,
       defaultSelected
     };
 
-    const countSelected = newList.reduce(
-      (val, { defaultSelected }) => val + (defaultSelected ? 1 : 0),
-      0
-    );
-
-    if (countSelected > maxSelect) {
+    if (countSelected >= maxSelect) {
       setOpen(true);
     }
 
@@ -106,7 +107,7 @@ export default ({
         <DialogTitle>Warning</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Two options are selected, radio buttons should have only one option
+            Radio buttons should have only one option. Previous selected options have been removed
           </DialogContentText>
         </DialogContent>
         <DialogActions>
