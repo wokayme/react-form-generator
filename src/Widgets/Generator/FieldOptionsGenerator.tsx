@@ -34,7 +34,7 @@ export default function FieldOptionsGenerator({
           // @ts-ignore: Element implicitly has an 'any' type
           const value = fieldListValues ? (fieldListValues[field.name] as string) : '';
           return (
-            <Grid item xs={4} key={field.name}>
+            <Grid item xs={field?.gridWidth || 4} key={field.name}>
               {field.typeField === FieldType.Input && (
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 <Input {...field} value={value} updateField={updateField} />

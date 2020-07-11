@@ -52,6 +52,7 @@ const isDisabled = {
 const radioCreator = {
   name: 'radioForm',
   label: 'Radio options',
+  gridWidth: 12,
   typeField: FieldTypeCreator.Radio
 };
 
@@ -62,7 +63,8 @@ const inputType = {
   options: [
     {
       label: 'Text',
-      value: 'text'
+      value: 'text',
+      defaultSelected: true
     },
     {
       label: 'Email',
@@ -98,7 +100,17 @@ const fieldsJSON: Array<PredefinedField> = [
   {
     fieldLabel: 'Text Area',
     fieldType: FieldType.TextArea,
-    options: []
+    options: [
+      label,
+      name,
+      defaultValue,
+      inputType,
+      className,
+      isRequired,
+      placeholder,
+      isDisabled,
+      helperText
+    ]
   },
   {
     fieldLabel: 'Radio Group',
